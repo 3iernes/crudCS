@@ -1,0 +1,13 @@
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.exe
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.deps.json
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.runtimeconfig.json
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.runtimeconfig.dev.json
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.dll
+D:\crudCS\main\main\bin\Debug\netcoreapp3.1\main.pdb
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.csprojAssemblyReference.cache
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.AssemblyInfoInputs.cache
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.AssemblyInfo.cs
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.csproj.CoreCompileInputs.cache
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.dll
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.pdb
+D:\crudCS\main\main\obj\Debug\netcoreapp3.1\main.genruntimeconfig.cache
