@@ -15,18 +15,37 @@ namespace main
             B borrar un producto
             S salir");
         }
+        static void crearProducto()
+        {
+
+        }
         static void Main(string[] args)
         {
-            char opcMenu='z';
-            while (opcMenu!='s')
+            char opcMenu;
+            //string direc = @"D:\crudCS\"
+            do
             {
                 imprimirMenu();
-                Console.Write("Opción:");
-                opcMenu=Char.Parse(Console.ReadLine());
-                Console.WriteLine($"Eligio la opc: {opcMenu}");
-            }
-                
-            
+                Console.Write("\nOpción:");
+                opcMenu = Char.Parse(Console.ReadLine());
+                switch (opcMenu)
+                {
+                    case 'c':
+
+                        break;
+                    case 'l':
+                        break;
+                    case 'a':
+                        break;
+                    case 'b':
+                        break;
+                    case 's':
+                        break;
+                }
+            } while (opcMenu != 's');
+
+
+
         }
     }
 }
