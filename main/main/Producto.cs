@@ -7,21 +7,13 @@ namespace main
 {
     public class Producto
     {
-        string ruta = "D:\\crudCS\\ListaDeProductos.csv";
-        public void agregar()
+        public string ruta = "D:\\crudCS\\ListaDeProductos.csv";
+        public void agregar(string codigo, string nombre, string precio)
         {
             Console.Clear();
             try
             {
-                string nombre, precio, codigo;
-                Console.WriteLine("Complete los siguientes campos");
-                Console.Write("Codigo del producto: ");
-                codigo = Console.ReadLine();
-                Console.Write("Nombre del producto: ");
-                nombre = Console.ReadLine();
-                Console.Write("Precio: ");
-                precio = Console.ReadLine();
-                StreamWriter sw = new StreamWriter(ruta, true);
+                StreamWriter sw = new StreamWriter(ruta, true);// el booleano true es para que no sobreescriba
                 sw.Write($"{codigo},");
                 sw.Write($"{nombre},");
                 sw.Write($"{precio}\n");
@@ -37,7 +29,6 @@ namespace main
         }
         public void listar()
         {
-            Console.Clear();
             try
             {
                 string[] lineas = File.ReadAllLines(ruta);//esto da un arreglo de strings
