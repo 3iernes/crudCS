@@ -1,39 +1,27 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Security.Cryptography;
 
 namespace main
 {
-    class Program
+    public class Program
     {
-        static void imprimirMenu()
-        {
-            Console.WriteLine(@"    
-            Bienvenido al controlador de stock
-            Opciones:
-            C crear un producto
-            L listar productos
-            A actualizar un producto
-            B borrar un producto
-            S salir");
-        }
-        static void crearProducto()
-        {
-
-        }
+        
         static void Main(string[] args)
         {
+            Producto producto = new Producto();
             char opcMenu;
-            //string direc = @"D:\crudCS\"
             do
             {
-                imprimirMenu();
-                Console.Write("\nOpción:");
+                Console.Write("\nOpción: ");
                 opcMenu = Char.Parse(Console.ReadLine());
                 switch (opcMenu)
                 {
                     case 'c':
-
+                        producto.agregar();
                         break;
                     case 'l':
+                        producto.listar();
                         break;
                     case 'a':
                         break;

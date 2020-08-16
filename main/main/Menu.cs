@@ -4,7 +4,8 @@ using System.Text;
 
 namespace main
 {
-    class ListaProductos
+    class Menu
     {
+        Console.WriteLine("Hola");
     }
 }
