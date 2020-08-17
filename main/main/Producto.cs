@@ -25,7 +25,7 @@ namespace main
             }
             finally
             {
-            }
+            }   
         }
         public void listar()
         {
@@ -50,7 +50,57 @@ namespace main
             finally
             {
             }
-
+            Console.Write("Fin de la lista");
+            Console.ReadKey();
+        }
+        public void buscar(string datoBusqueda)
+        {
+            bool encontrado = false;
+            string[] lineas = File.ReadAllLines(ruta);
+            foreach (var linea in lineas)
+            {
+                var valores = linea.Split(',');
+                if ((valores[0]==datoBusqueda) || (valores[1] == datoBusqueda) || (valores[1] == datoBusqueda))
+                { 
+                Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
+                Console.WriteLine($"Codigo de producto: {valores[0]}\n" +
+                    $"Nombre del producto {valores[1]}\n" +
+                    $"Precio del producto: {valores[2]}");
+                Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
+                encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine("Producto no encontrado");
+            }
+            Console.ReadKey();
+        }
+        public void actualizar(string datoActualizar)
+        {
+            bool encontrado = false;
+            string[] lineas = File.ReadAllLines(ruta);
+            foreach (var linea in lineas)
+            {
+                var valores = linea.Split(',');
+                if ((valores[0] == datoActualizar) || (valores[1] == datoActualizar) || (valores[1] == datoActualizar))
+                {
+                    Console.WriteLine("Producto encontrado, complete los nuevos valores");
+                    encontrado = true;
+                    Console.Write("Codigo de producto: ");
+                    valores[0] = Console.ReadLine();
+                    Console.Write("Nombre del producto: ");
+                    valores[1] = Console.ReadLine();
+                    Console.Write("Precio del producto: ");
+                    valores[2] = Console.ReadLine();
+                    agregar(valores[0], valores[1], valores[2]); 
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine("Producto no encontrado");
+            }
+            Console.ReadKey();
         }
     }
 }

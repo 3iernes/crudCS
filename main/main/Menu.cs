@@ -4,9 +4,10 @@ namespace main
     class Menu
     {
         Producto prod = new Producto();
+
         public void imprimir()
         {
-            int opc = 0;
+            
             Console.Clear();
             Console.WriteLine(@" 
                                  _____________________________
@@ -15,35 +16,12 @@ namespace main
                                 | 1- Crear un producto        |  
                                 | 2- Listar productos         |  
                                 | 3- Actualizar un producto   |  
-                                | 4- Borrar un producto       |
+                                | 4- Borrar un producto       | 
+                                | 5- Buscar un producto       |
+                                | 6- Salir                    |  
                                 |_____________________________|");
-
-            Console.Write("\nIngrese una opcion: ");
-            opc = int.Parse(Console.ReadLine());
-            while (!(opc >= 1 && opc <= 4))
-            {
-                Console.Clear();
-                Console.Write("Esa opcion no existe, ingrese otra: ");
-                opc = int.Parse(Console.ReadLine());
-            }
-            switch (opc)
-            {
-                case 1:
-                    menuCrearP();
-                    break;
-                case 2:
-                    menuListarP();
-                    break;
-                case 3:
-                    Console.WriteLine("opc");
-                    break;
-                case 4:
-                    Console.WriteLine("opc");
-                    break;
-            }
-
         } 
-        private void menuCrearP()
+        public void crearP()
         {
             Console.Clear();
             Console.WriteLine(@"
@@ -52,7 +30,8 @@ namespace main
                                |**************************|
                                |******Crear producto******|
                                |**************************|
-                               |__________________________|\n");
+                               |__________________________|
+                                ");
             
             Console.WriteLine("Complete los siguientes campos");
             Console.Write("Codigo del producto: ");
@@ -63,7 +42,7 @@ namespace main
             string precio = Console.ReadLine();
             prod.agregar(codigo, nombre, precio);
         }
-        private void menuListarP()
+        public void listarP()
         {
             Console.Clear();
             Console.WriteLine(@"
@@ -75,6 +54,36 @@ namespace main
                                |____________________________|
                              ");
             prod.listar();
+        }
+        public void buscarP()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+                                ____________________________
+                               |                            |     
+                               |****************************|
+                               |******Buscar productos******|
+                               |****************************|
+                               |____________________________|
+                             ");
+            Console.Write("Ingrese algun dato del producto a buscar: ");
+            string datoBusqueda = Console.ReadLine();
+            prod.buscar(datoBusqueda);
+        }
+        public void actualizarP()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+                                ________________________________
+                               |                                |     
+                               |********************************|
+                               |******Actualizar productos******|
+                               |********************************|
+                               |________________________________|
+                             ");
+            Console.Write("Ingrese algun dato del producto a actualizar: ");
+            string datoActualizar = Console.ReadLine();
+            prod.actualizar(datoActualizar);
         }
     }
 }
