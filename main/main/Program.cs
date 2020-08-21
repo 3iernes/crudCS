@@ -11,6 +11,7 @@ namespace main
         {
             Menu menu = new Menu();
             int opc = 0;
+            //agregar manejo de excepciones pq esto se cae a pedazos 
             while (opc != 6)
             {
                 menu.imprimir();

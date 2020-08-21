@@ -35,7 +35,7 @@ namespace main
                 foreach(var linea in lineas)
                 {
                     var valores = linea.Split(',') ;
-                    //to do se sale de indice si el primero no tiene , al final
+                    //se sale de indice si el primero no tiene , al final
                     Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
                     Console.WriteLine($"Codigo de producto: {valores[0]}\n" +
                         $"Nombre del producto {valores[1]}\n" +
@@ -53,54 +53,32 @@ namespace main
             Console.Write("Fin de la lista");
             Console.ReadKey();
         }
-        public void buscar(string datoBusqueda)
+
+        public bool buscar(string datoBusqueda)
         {
-            bool encontrado = false;
             string[] lineas = File.ReadAllLines(ruta);
             foreach (var linea in lineas)
             {
-                var valores = linea.Split(',');
-                if ((valores[0]==datoBusqueda) || (valores[1] == datoBusqueda) || (valores[1] == datoBusqueda))
-                { 
-                Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
-                Console.WriteLine($"Codigo de producto: {valores[0]}\n" +
-                    $"Nombre del producto {valores[1]}\n" +
-                    $"Precio del producto: {valores[2]}");
-                Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
-                encontrado = true;
+                if (linea.Contains(datoBusqueda))
+                {
+                    return true;
                 }
             }
-            if (!encontrado)
-            {
-                Console.WriteLine("Producto no encontrado");
-            }
-            Console.ReadKey();
+            return false;
         }
+
         public void actualizar(string datoActualizar)
         {
-            bool encontrado = false;
-            string[] lineas = File.ReadAllLines(ruta);
-            foreach (var linea in lineas)
+            if (buscar(datoActualizar))
             {
-                var valores = linea.Split(',');
-                if ((valores[0] == datoActualizar) || (valores[1] == datoActualizar) || (valores[1] == datoActualizar))
-                {
-                    Console.WriteLine("Producto encontrado, complete los nuevos valores");
-                    encontrado = true;
-                    Console.Write("Codigo de producto: ");
-                    valores[0] = Console.ReadLine();
-                    Console.Write("Nombre del producto: ");
-                    valores[1] = Console.ReadLine();
-                    Console.Write("Precio del producto: ");
-                    valores[2] = Console.ReadLine();
-                    agregar(valores[0], valores[1], valores[2]); 
-                }
+                Console.WriteLine("Producto encontrado");
+                Console.ReadKey();
             }
-            if (!encontrado)
+            else
             {
                 Console.WriteLine("Producto no encontrado");
+                Console.ReadKey();
             }
-            Console.ReadKey();
         }
     }
 }
