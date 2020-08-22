@@ -17,6 +17,7 @@ namespace main
                 sw.Write($"{codigo},");
                 sw.Write($"{nombre},");
                 sw.Write($"{precio}\n");
+                sw.Flush();
                 sw.Close();
             }
             catch (Exception e)
@@ -34,13 +35,7 @@ namespace main
                 string[] lineas = File.ReadAllLines(ruta);//esto da un arreglo de strings
                 foreach(var linea in lineas)
                 {
-                    var valores = linea.Split(',') ;
-                    //se sale de indice si el primero no tiene , al final
-                    Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
-                    Console.WriteLine($"Codigo de producto: {valores[0]}\n" +
-                        $"Nombre del producto {valores[1]}\n" +
-                        $"Precio del producto: {valores[2]}");
-                    Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
+                    imprimir(linea);
                 }
             }
             catch (Exception e)
@@ -61,6 +56,7 @@ namespace main
             {
                 if (linea.Contains(datoBusqueda))
                 {
+                    imprimir(linea);
                     return true;
                 }
             }
@@ -79,6 +75,15 @@ namespace main
                 Console.WriteLine("Producto no encontrado");
                 Console.ReadKey();
             }
+        }
+        public void imprimir(string linea)
+        {
+            var valores = linea.Split(',');
+            Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
+            Console.WriteLine($"Codigo de producto: {valores[0]}\n" +
+                $"Nombre del producto {valores[1]}\n" +
+                $"Precio del producto: {valores[2]}");
+            Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
         }
     }
 }
