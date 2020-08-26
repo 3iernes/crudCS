@@ -35,7 +35,7 @@ namespace main
                         menu.actualizarP();
                         break;
                     case 4:
-                        Console.WriteLine("opc");
+                        menu.borrar();
                         break;
                     case 5:
                         menu.buscarP();

@@ -85,5 +85,20 @@ namespace main
             string datoActualizar = Console.ReadLine();
             prod.actualizar(datoActualizar);
         }
+        public void borrar()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+                                ___________________________
+                               |                           |     
+                               |***************************|
+                               |******Borrar producto******|
+                               |***************************|
+                               |___________________________|
+                             ");
+            Console.Write("Ingrese algun dato del producto a borrar: ");
+            string datoBorrar = Console.ReadLine();
+            prod.borrar(datoBorrar);
+        }
     }
 }

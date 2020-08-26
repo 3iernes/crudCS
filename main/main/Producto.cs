@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 namespace main
 {
     public class Producto
     {
-        public string ruta = "D:\\crudCS\\ListaDeProductos.csv";
+        private string ruta = "D:\\crudCS\\ListaDeProductos.csv";
+        private string rutaTmp = "D:\\crudCS\\tmp.csv";
         public void agregar(string codigo, string nombre, string precio)
         {
             Console.Clear();
@@ -63,6 +65,19 @@ namespace main
             return false;
         }
 
+        public bool buscar(string datoBusqueda, bool x)
+        {
+            string[] lineas = File.ReadAllLines(ruta);
+            foreach (var linea in lineas)
+            {
+                if (linea.Contains(datoBusqueda))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void actualizar(string datoActualizar)
         {
             if (buscar(datoActualizar))
@@ -84,6 +99,37 @@ namespace main
                 $"Nombre del producto {valores[1]}\n" +
                 $"Precio del producto: {valores[2]}");
             Console.WriteLine("* ~~~~~~~~~~~ * ~~~~~~~~~~~ * ~~~~~~~~~~~ * ");
+        }
+        public void borrar(string datoBorrar)
+        {
+            if (buscar(datoBorrar, true))
+            {
+                StreamWriter sw = new StreamWriter(rutaTmp, true);
+                string[] lineas = File.ReadAllLines(ruta);
+                foreach (var linea in lineas)
+                {
+                    if (linea.Contains(datoBorrar))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        sw.WriteLine(linea);
+                    }
+                }
+                sw.Close();
+                File.Delete(ruta);
+                File.Move(rutaTmp, "D:\\crudCS\\ListaDeProductos.csv");//truquito para cambiar el nombre del temporal   
+                Console.WriteLine("Producto eliminado");
+                Console.ReadKey();
+                
+            }
+            else
+            {
+                Console.WriteLine("No existe");
+                Console.ReadKey();
+            }
+            
         }
     }
 }
