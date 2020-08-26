@@ -21,6 +21,8 @@ namespace main
                 sw.Write($"{precio}\n");
                 sw.Flush();
                 sw.Close();
+                Console.WriteLine("Producto agregado");
+                Console.ReadKey();
             }
             catch (Exception e)
             {
@@ -80,9 +82,20 @@ namespace main
 
         public void actualizar(string datoActualizar)
         {
-            if (buscar(datoActualizar))
+            if (buscar(datoActualizar, true))
             {
-                Console.WriteLine("Producto encontrado");
+                borrar(datoActualizar);
+                Console.Clear();
+                Console.WriteLine("Producto encontrado");                     
+                Console.WriteLine("Complete los siguientes campos");
+                Console.Write("Codigo del producto: ");
+                string codigo = Console.ReadLine();
+                Console.Write("Nombre del producto: ");
+                string nombre = Console.ReadLine();
+                Console.Write("Precio: ");
+                string precio = Console.ReadLine();
+                agregar(codigo, nombre, precio);
+                Console.WriteLine("Actualizado");
                 Console.ReadKey();
             }
             else
@@ -121,13 +134,10 @@ namespace main
                 File.Delete(ruta);
                 File.Move(rutaTmp, "D:\\crudCS\\ListaDeProductos.csv");//truquito para cambiar el nombre del temporal   
                 Console.WriteLine("Producto eliminado");
-                Console.ReadKey();
-                
             }
             else
             {
                 Console.WriteLine("No existe");
-                Console.ReadKey();
             }
             
         }

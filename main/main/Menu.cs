@@ -69,6 +69,7 @@ namespace main
             Console.Write("Ingrese algun dato del producto a buscar: ");
             string datoBusqueda = Console.ReadLine();
             prod.buscar(datoBusqueda);
+            Console.ReadKey();
         }
         public void actualizarP()
         {
@@ -99,6 +100,7 @@ namespace main
             Console.Write("Ingrese algun dato del producto a borrar: ");
             string datoBorrar = Console.ReadLine();
             prod.borrar(datoBorrar);
+            Console.ReadKey();
         }
     }
 }
