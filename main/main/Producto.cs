@@ -16,9 +16,7 @@ namespace main
             try
             {
                 StreamWriter sw = new StreamWriter(ruta, true);// el booleano true es para que no sobreescriba
-                sw.Write($"{codigo},");
-                sw.Write($"{nombre},");
-                sw.Write($"{precio}\n");
+                sw.WriteLine($"{codigo}, {nombre}, {precio}");
                 sw.Flush();
                 sw.Close();
                 Console.WriteLine("Producto agregado");
